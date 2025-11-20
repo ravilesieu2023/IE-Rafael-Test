@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BYB-Reader</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.21/mammoth.browser.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body class="light">
+  <header class="app-header">
+    <div class="branding">
+      <div class="logo-circle">BYB</div>
+      <div>
+        <h1>BYB-Reader</h1>
+        <p>Contract review made clear</p>
+      </div>
+    </div>
+    <div class="actions">
+      <label class="theme-toggle">
+        <input type="checkbox" id="themeToggle" />
+        <span class="toggle-slider"></span>
+        <span class="toggle-label">Light / Dark</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="controls">
+      <div class="upload-card">
+        <h2>Upload Contract</h2>
+        <p>Supported formats: PDF, DOCX</p>
+        <input type="file" id="fileInput" accept=".pdf,.docx" />
+        <div class="upload-actions">
+          <button id="readButton" disabled>Start TTS</button>
+          <button id="stopButton" disabled>Stop TTS</button>
+        </div>
+        <div id="statusMessage" class="status-message"></div>
+      </div>
+
+      <div class="progress-card">
+        <h3>Reading Progress</h3>
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div id="progressPercent" class="progress-text">0%</div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div id="tldr" class="tldr" aria-live="polite">Upload a contract to see a TLDR summary.</div>
+      <article id="contractContent" class="contract" aria-live="polite">
+        <p class="placeholder">Your processed contract will appear here with legal terms linked to their definitions.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
